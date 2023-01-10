@@ -1,5 +1,7 @@
 package com.example.space;
 
+import java.util.HashMap;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -15,5 +17,9 @@ public class GreetingHandler {
     return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
       .body(BodyInserters.fromValue(new Greeting("Welcome to Codespaces.")));
   }
-  
+ 
+  public Mono<ServerResponse> index(ServerRequest request) {
+    return ServerResponse.ok().render("index", new HashMap<String,String>());
+  }
+
 }
